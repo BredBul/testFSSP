@@ -1,0 +1,90 @@
+//====================================================================================================
+.popup {
+	-webkit-overflow-scrolling: touch;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 100;
+	padding: 30px 10px;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+	transition: visibility 0.8s ease 0s;
+	&::before {
+		content: "";
+		background-color: rgba(0, 0, 0, 0.9);
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		opacity: 0;
+		transition: opacity 0.8s ease 0s;
+	}
+	&.show {
+		visibility: visible;
+		overflow: auto;
+		&::before {
+			opacity: 1;
+		}
+		.popup__body {
+			transform: scale(1);
+		}
+	}
+	&._active {
+		visibility: visible;
+		overflow: auto;
+		&::before {
+			opacity: 1;
+		}
+		.popup__body {
+			transition: all 0.3s ease 0.2s;
+			transform: scale(1);
+		}
+	}
+	// .popup__content
+	&__content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		min-height: 100%;
+		flex: 1 1 auto;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	// .popup__body
+	&__body {
+		transform: scale(0);
+		transition: all 0.3s ease 0s;
+		background-color: #f6f6f6;
+		padding: 50px;
+		width: 100%;
+		max-width: 800px;
+	}
+	//. popup__desc
+	&__desc{
+		font-size: 24px;
+		line-height: math.div(38,24)* 100%;
+		color: rgba(32, 53, 56, 0.9);
+
+	}
+	// .popup__close
+	&__close {
+		width: 15px;
+		height: 15px;
+		position: absolute;
+		top: 15px;
+		right: 15px;
+		cursor: pointer;
+		z-index: 30;
+		background: url("../img/icons/close.svg") 0 0 no-repeat;
+		filter: invert(1);
+		&:hover{
+			transform: scale(1.2);
+		}
+	}
+}
+//====================================================================================================
+//====================================================================================================

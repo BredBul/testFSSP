@@ -1,0 +1,69 @@
+._video { 
+display: block; 
+width: 100%; /* assuming that the video has a 16:9 ratio */ 
+// padding-bottom: 56.25%; 
+overflow: hidden; 
+position: relative; 
+cursor: pointer; 
+	video,
+	iframe,
+	object,
+	embed {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.videobg {
+	video,
+	iframe,
+	object,
+	embed {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		min-width: 100%;
+		min-height: 100%;
+		width: auto;
+		height: auto;
+		z-index: -100;
+		transform: translateX(-50%) translateY(-50%);
+		background-size: cover;
+	}
+}
+
+img.youtube-thumb { 
+bottom: 0; 
+display: block; 
+left: 0; 
+margin: auto; 
+max-width: 100%; 
+width: 100%; 
+position: absolute; 
+right: 0; 
+top: 0; 
+height: auto 
+}
+
+div.play-button { 
+height: 81px; 
+width: 81px; 
+left: 50%; 
+top: 50%; 
+margin-left: -36px; 
+margin-top: -36px; 
+position: absolute; 
+// z-index: ;
+// background: url("https://i.imgur.com/TxzC70f.png") no-repeat; 
+// background: url("../img/video/play-button.svg") no-repeat; 
+}
+#youtube-iframe { 
+width: 100%; 
+height: 100%; 
+position: absolute; 
+top: 0; 
+left: 0; 
+}
