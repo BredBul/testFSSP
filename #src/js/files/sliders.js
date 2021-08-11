@@ -61,7 +61,7 @@ if (sliderScrollItems.length > 0) {
 
 // function sliders_bild_callback(params) { }
 
-let slider_about = new Swiper('.mainslider__body', {
+let slider_about = new Swiper('.slider-news__body', {
   /*
   effect: 'fade',
   autoplay: {
@@ -71,8 +71,8 @@ let slider_about = new Swiper('.mainslider__body', {
   */
   observer: true,
   observeParents: true,
-  slidesPerView: 1,
-  spaceBetween: 20,
+  slidesPerView: 3,
+  spaceBetween: 40,
   autoHeight: true,
   speed: 800,
   centeredSlide: true,
@@ -82,36 +82,30 @@ let slider_about = new Swiper('.mainslider__body', {
   //preloadImages: false,
   //lazy: true,
   // Dotts
-  //pagination: {
-  //  el: '.slider-quality__pagging',
-  //  clickable: true,
-  //},
+  pagination: {
+   el: '.control-slider-news__pagging',
+   clickable: true,
+  },
   // Arrows
   navigation: {
-    nextEl: '.control-mainslider__arrow_next',
-    prevEl: '.control-mainslider__arrow_prev',
+    nextEl: '.control-slider-news__arrow_next',
+    prevEl: '.control-slider-news__arrow_prev',
   },
-  /*
   breakpoints: {
     320: {
       slidesPerView: 1,
-      spaceBetween: 0,
+      spaceBetween: 40,
       autoHeight: true,
     },
-    768: {
+    580: {
       slidesPerView: 2,
       spaceBetween: 20,
     },
     992: {
       slidesPerView: 3,
-      spaceBetween: 20,
-    },
-    1268: {
-      slidesPerView: 4,
-      spaceBetween: 30,
-    },
+      spaceBetween: 40,
+    }
   },
-  */
   on: {
     lazyImageReady: function () {
       ibg();

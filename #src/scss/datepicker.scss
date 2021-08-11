@@ -17,13 +17,14 @@
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	//border-radius: 0.26392em;
+	// border-radius: 0.26392em;
 	overflow: hidden;
-	background: #000;
-	-webkit-box-shadow: 0 1.25em 1.25em -0.9375em rgba(0, 0, 0, 0.3);
-	box-shadow: 0 1.25em 1.25em -0.9375em rgba(0, 0, 0, 0.3);
-	border-right: 1px solid #fff;
-	border-left: 1px solid #f1ad70;
+	background: #fff;
+	box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
+	// -webkit-box-shadow: 0 1.25em 1.25em -0.9375em rgba(0, 0, 0, 0.3);
+	// box-shadow: 0 1.25em 1.25em -0.9375em rgba(0, 0, 0, 0.3);
+	// border-right: 1px solid #fff;
+	// border-left: 1px solid #f1ad70;
 	padding: 5px;
 	&:before,
 	&:after {
@@ -33,7 +34,7 @@
 		left: 0;
 		z-index: 2;
 		position: absolute;
-		background-image: linear-gradient(to right, #f1ad70 0%, #fffdf2 100%);
+		// background-image: linear-gradient(to right, #f1ad70 0%, #fffdf2 100%);
 	}
 	&:before {
 		top: 0;
@@ -61,8 +62,10 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	background: rgba(0, 0, 0, 0.75);
+	// background: rgba(0, 0, 0, 0.75);
+	background: #fff;
 	color: #fff;
+	color: #4d4d4d;
 	width: 100%;
 	height: 100%;
 	padding: 0.5em;
@@ -88,6 +91,7 @@
 	border-bottom: 1px solid #fff;
 	border-radius: 0;
 	color: #fff;
+	color: #4d4d4d;
 	font-size: 0.875em;
 	padding: 0.25em 0;
 	width: 80%;
@@ -111,11 +115,11 @@
 	padding: 0.5em;
 	margin: 0 auto auto;
 	cursor: pointer;
-	background: hsla(0, 0%, 50.2%, 0.4);
+	background: #f6f6f6;
 }
 .qs-datepicker .qs-overlay .qs-submit.qs-disabled {
-	color: grey;
-	border-color: grey;
+	color: #4d4d4d;
+	border-color: #4d4d4d;
 	cursor: not-allowed;
 }
 .qs-datepicker .qs-overlay .qs-overlay-month-container {
@@ -164,8 +168,10 @@
 	flex-grow: 1;
 	-ms-flex-negative: 0;
 	flex-shrink: 0;
-	background: #000;
+	// background: #000;
+	background: #fff;
 	color: #fff;
+	color: #4d4d4d;
 	-webkit-filter: blur(0);
 	filter: blur(0);
 	-webkit-transition: -webkit-filter 0.3s;
@@ -204,14 +210,14 @@
 	transition: border 0.2s;
 }
 .qs-datepicker .qs-arrow.qs-left:after {
-	border-right-color: grey;
+	border-right-color: #4d4d4d;
 	right: 50%;
 	-webkit-transform: translate(25%, -50%);
 	-ms-transform: translate(25%, -50%);
 	transform: translate(25%, -50%);
 }
 .qs-datepicker .qs-arrow.qs-right:after {
-	border-left-color: grey;
+	border-left-color: #4d4d4d;
 	left: 50%;
 	-webkit-transform: translate(-25%, -50%);
 	-ms-transform: translate(-25%, -50%);
@@ -225,7 +231,7 @@
 	cursor: pointer;
 }
 .qs-datepicker .qs-month-year:hover {
-	border-bottom: 1px solid grey;
+	border-bottom: 1px solid #4d4d4d;
 }
 .qs-datepicker .qs-month-year:active:focus,
 .qs-datepicker .qs-month-year:focus {
@@ -241,7 +247,7 @@
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	color: #fff;
+	color: #4d4d4d;
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
 	padding: 0.3125em;
@@ -314,10 +320,10 @@
 .qs-datepicker .qs-square.qs-day {
 	cursor: default;
 	font-weight: 700;
-	color: grey;
+	color: #4d4d4d;
 }
 .qs-datepicker .qs-square:not(.qs-empty):not(.qs-disabled):not(.qs-day):not(.qs-active):hover {
-	background: orange;
+	background: #d1d1d1;
 }
 .qs-datepicker .qs-event {
 	position: relative;

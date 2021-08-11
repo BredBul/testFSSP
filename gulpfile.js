@@ -14,11 +14,11 @@ let rename = require("gulp-rename");
 let fileinclude = require("gulp-file-include");
 let clean_css = require("gulp-clean-css");
 let newer = require('gulp-newer');
-// let babel = require('gulp-babel');
+let babel = require('gulp-babel'); /* for IE */
 
 let webp = require('imagemin-webp');
 let webpcss = require("gulp-webpcss");
-let webphtml = require('gulp-webp-html');
+// let webphtml = require('gulp-webp-html');
 
 let fonter = require('gulp-fonter');
 
@@ -32,6 +32,7 @@ let path = {
 	build: {
 		html: project_name + "/",
 		js: project_name + "/js/",
+		jsIE: project_name + "/jsIE/",
 		css: project_name + "/css/",
 		images: project_name + "/img/",
 		fonts: project_name + "/fonts/",
@@ -40,8 +41,10 @@ let path = {
 	src: {
 		favicon: src_folder + "/img/favicon.{jpg,png,svg,gif,ico,webp}",
 		html: [src_folder + "/*.html", "!" + src_folder + "/_*.html"],
-		// js: [src_folder + "/js/app.js", src_folder + "/js/vendors.js", src_folder + "/js/isIE.js", src_folder + "/js/corejs.js"],
-		js: [src_folder + "/js/app.js", src_folder + "/js/vendors.js"],
+		// js: [src_folder + "/js/app.js", src_folder + "/js/vendors.js", src_folder + "/js/isIE.js"],
+		js: [src_folder + "/js/app.js", src_folder + "/js/vendors.js", src_folder + "/js/isIE.js", src_folder + "/js/corejs.js"], /* for IE */
+		jsIE: [src_folder + "/js/app.js", src_folder + "/js/vendors.js", src_folder + "/js/isIE.js"], /* for IE */
+		corejs: [src_folder + "/js/corejs.js"],
 		css: src_folder + "/scss/style.scss",
 		images: [src_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}", "!**/favicon.*"],
 		fonts: src_folder + "/fonts/*.ttf",
@@ -50,6 +53,7 @@ let path = {
 	watch: {
 		html: src_folder + "/**/*.html",
 		js: src_folder + "/**/*.js",
+		jsIE: src_folder + "/**/*.js",
 		css: src_folder + "/scss/**/*.scss",
 		images: src_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}"
 	},
@@ -68,14 +72,14 @@ function html() {
 	return src(path.src.html, {})
 		.pipe(plumber())
 		.pipe(fileinclude())
-		.pipe(webphtml())
+		// .pipe(webphtml())
 		.pipe(dest(path.build.html))
 		.pipe(browsersync.stream());
 }
 function css() {
 	return src(path.src.css, {})
 		.pipe(plumber())
-		.pipe(scss.sync({outputStyle: "expanded",}).on('error',scss.logError))
+		.pipe(scss.sync({ outputStyle: "expanded", }).on('error', scss.logError))
 		.pipe(group_media())
 		.pipe(
 			autoprefixer({
@@ -105,9 +109,6 @@ function js() {
 		.pipe(plumber())
 		.pipe(fileinclude())
 		.pipe(gulp.dest(path.build.js))
-		// .pipe(babel({
-		// 	presets: ['@babel/preset-env']
-		// }))
 		.pipe(uglify(/* options */))
 		.on('error', function (err) { console.log(err.toString()); this.emit('end'); })
 		.pipe(
@@ -118,6 +119,23 @@ function js() {
 		)
 		.pipe(dest(path.build.js))
 		.pipe(browsersync.stream());
+}
+function jsIE() {
+	return src(path.src.jsIE, {})
+	.pipe(plumber())
+		.pipe(fileinclude())
+		.pipe(gulp.dest(path.build.jsIE))
+		.pipe(babel({
+			presets: ['@babel/preset-env'] /* for IE */
+		}))
+		.pipe(uglify(/* options */))
+		.pipe(
+			rename({
+				suffix: ".min",
+				extname: ".js"
+			})
+		)
+		.pipe(dest(path.build.jsIE));
 }
 function images() {
 	return src(path.src.images)
@@ -207,14 +225,16 @@ function watchFiles() {
 	gulp.watch([path.watch.html], html);
 	gulp.watch([path.watch.css], css);
 	gulp.watch([path.watch.js], js);
+	gulp.watch([path.watch.jsIE], jsIE);
 	gulp.watch([path.watch.images], images);
 }
-let build = gulp.series(clean, fonts_otf, gulp.parallel(html, css, js, favicon, images, videos), fonts, gulp.parallel(fontstyle));
+let build = gulp.series(clean, fonts_otf, gulp.parallel(html, css, js, jsIE, favicon, images, videos), fonts, gulp.parallel(fontstyle));
 let watch = gulp.parallel(build, watchFiles, browserSync);
 
 exports.html = html;
 exports.css = css;
 exports.js = js;
+exports.jsIE = jsIE;
 exports.videos = videos;
 exports.favicon = favicon;
 exports.fonts_otf = fonts_otf;

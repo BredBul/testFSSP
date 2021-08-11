@@ -75,11 +75,6 @@ function scroll_scroll() {
           scr_item.classList.remove('_active');
         }
       }
-      if (((src_value > scr_item_offset - window.innerHeight))) {
-        if (scr_item.querySelectorAll('._lazy').length > 0) {
-          scroll_lazy(scr_item);
-        }
-      }
     }
   }
   if (scr_fix_block.length > 0) {
@@ -105,37 +100,6 @@ setTimeout(function () {
   scroll_scroll();
 }, 100);
 
-function scroll_lazy(scr_item) {
-  let lazy_src = scr_item.querySelectorAll('*[data-src]');
-  if (lazy_src.length > 0) {
-    for (let index = 0; index < lazy_src.length; index++) {
-      const el = lazy_src[index];
-      if (!el.classList.contains('_loaded')) {
-        el.setAttribute('src', el.getAttribute('data-src'));
-        el.classList.add('_loaded');
-      }
-    }
-  }
-  let lazy_srcset = scr_item.querySelectorAll('*[data-srcset]');
-  if (lazy_srcset.length > 0) {
-    for (let index = 0; index < lazy_srcset.length; index++) {
-      const el = lazy_srcset[index];
-      if (!el.classList.contains('_loaded')) {
-        el.setAttribute('srcset', el.getAttribute('data-srcset'));
-        el.classList.add('_loaded');
-      }
-    }
-  }
-}
-function scroll_load_item(scr_item) {
-  if (scr_item.classList.contains('_load-map') && !scr_item.classList.contains('_loaded-map')) {
-    let map_item = document.getElementById('map');
-    if (map_item) {
-      scr_item.classList.add('_loaded-map');
-      map();
-    }
-  }
-}
 function scrParallax(block, scrProcent, blockHeight) {
   let prlxItems = block.querySelectorAll('._prlx-item');
   if (prlxItems.length > 0) {

@@ -55,6 +55,7 @@ button::-moz-focus-inner {
 }
 a {
 	text-decoration: none;
+	color: inherit;
 }
 a:visited{
 	color: unset;
@@ -77,6 +78,9 @@ h5,
 h6 {
 	font-weight: inherit;
 	font-size: inherit;
+}
+source:not([src]):not([srcset]) {
+	// visibility: hidden;
 }
 //-webkit-overflow-scrolling: touch;
 //animation-play-state: paused !important;

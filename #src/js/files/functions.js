@@ -165,7 +165,6 @@ for (let index = 0; index < tabs.length; index++) {
 
 //=================
 //Spollers
-
 const spollersArray = document.querySelectorAll('[data-spollers]');
 if (spollersArray.length > 0) {
   // Получение обычных спойлеров
@@ -281,8 +280,7 @@ if (spollersArray.length > 0) {
     }
   }
 }
-
-//=================
+//========================================================================================================================================================
 //Gallery
 let gallery = document.querySelectorAll('._gallery');
 if (gallery) {
