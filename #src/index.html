@@ -35,8 +35,7 @@
 													data-value="Иванов Иван Иванович" class="input _req _cyrillic">
 											</div>
 											<div class="form__line form__line_2">
-												<input type="text" autocomplete="off" name="form[]"
-													data-value="09.03.1986" class="input _req _date">
+												<input type="text" autocomplete="off" name="form[]" data-value="09.03.1986" class="input _req _date">
 											</div>
 											<div class="form__line form__line_3">
 												<select name="form[]" data-type="input" class="form__select">
@@ -280,17 +279,22 @@
 								</ul>
 							</div>
 							<div class="banner-mp__qr-code">
-								<img src="img/mobile-app/qr-code.png" alt="QR code">
+								<img src="img/mobile-app/qr-code.png" width="200" height="200" alt="QR code">
 								<p>Наведите камеру или сканер QR-кодов</p>
 							</div>
-							<img class="banner-mp__phone" src="img/mobile-app/IPhone.png" alt="">
-							<img class="banner-mp__phone-mobile" src="img/mobile-app/IPhone-mobile.png" alt="">
+							<div class="banner-mp__phone">
+								<picture>
+									<source media="(min-width: 768px)" width="300" height="267" data-srcset="img/mobile-app/IPhone.webp" type="image/webp">
+									<source media="(max-width: 767.98px)" width="192" height="147" data-srcset="img/mobile-app/IPhone-mobile.webp" type="image/webp">
+									<img data-src="img/mobile-app/IPhone.png" width="300" height="267" class="lazy" alt="Изображение отсутствует" src="img/icons/no-image.png">
+								</picture>
+							</div>
 							<div class="banner-mp__badges">
 								<a class="banner-mp__badge app-store-badge" target="_blank" href="https://itunes.apple.com/us/app/fssp/id606726176?l=ru&amp;ls=1&amp;mt=8">
-									<img src="img/app-store-badge.png" alt="Загрузите в App Store">
+									<img src="img/app-store-badge.png" width="113" height="33" alt="Загрузите в App Store">
 								</a>
 								<a class="banner-mp__badge google-play-badge" target="_blank" href="https://play.google.com/store/apps/details?id=ru.sitesoft.fssp&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
-									<img alt="Доступно в Google Play" src="img/google-play-badge.png"/>
+									<img alt="Доступно в Google Play" width="111" height="33" src="img/google-play-badge.png"/>
 								</a>
 							</div>
 						</div>
@@ -351,10 +355,10 @@
 									<a href="#" class="slide-news__img _ibg">
 										<picture>
 											<source data-srcset="img/0.webp" class="source" type="image/webp">
-											<img data-src="img/0.jpg" class="lazy" alt="Изображение отсутствует" src="img/icons/no-image.png">
+											<img data-src="img/0.jpg" width="1199" height="742" class="lazy" alt="Изображение отсутствует" src="img/icons/no-image.png">
 										</picture> <!-- При битой ссылке до изображения - срабатывает скрипт для подставления иного изображения --> 
 									</a>
-									<div class="slide-news__title _title">Жилье россиян в пандемию стали реже принудительно продавать за долги</div>
+									<div class="slide-news__title _title"><a href="#">Жилье россиян в пандемию стали реже принудительно продавать за долги</a></div>
 									<div class="slide-news__desc">В 2020 году судебные приставы в интересах кредиторов выставили на торги на 14,1% меньше квартир, чем годом ранее.</div>
 								</div>
 							</div>
@@ -363,10 +367,10 @@
 									<a href="#" class="slide-news__img _ibg">
 										<picture>
 											<source data-srcset="img/0.webp" class="source" type="image/webp">
-											<img data-src="img/0.jpg" class="lazy" alt="Изображение отсутствует" src="img/icons/no-image.png">
+											<img data-src="img/0.jpg" width="1199" height="742" class="lazy" alt="Изображение отсутствует" src="img/icons/no-image.png">
 										</picture> <!-- При битой ссылке до изображения - срабатывает скрипт для подставления иного изображения --> 
 									</a>
-									<div class="slide-news__title _title">Жилье россиян в пандемию стали реже принудительно продавать за долги</div>
+									<div class="slide-news__title _title"><a href="#">Жилье россиян в пандемию стали реже принудительно продавать за долги</a></div>
 									<div class="slide-news__desc">В 2020 году судебные приставы в интересах кредиторов выставили на торги на 14,1% меньше квартир, чем годом ранее.</div>
 								</div>
 							</div>
@@ -375,10 +379,10 @@
 									<a href="#" class="slide-news__img _ibg">
 										<picture>
 											<source data-srcset="img/news-1.webp" type="image/webp">
-											<img data-src="img/news-1.png" class="lazy" alt="Изображение отсутствует" src="img/icons/no-image.png">
+											<img data-src="img/news-1.png" width="1199" height="742" class="lazy" alt="Изображение отсутствует" src="img/icons/no-image.png">
 										</picture>
 									</a>
-									<div class="slide-news__title _title">Число невыездных из-за долгов россиян выросло на 20% за год</div>
+									<div class="slide-news__title _title"><a href="#">Число невыездных из-за долгов россиян выросло на 20% за год</a></div>
 									<div class="slide-news__desc">Более 4 млн россиян не могут покинуть страну из-за долгов. За год таких граждан стало больше примерно на 700 тыс.</div>
 								</div>
 							</div>
@@ -387,10 +391,10 @@
 									<a href="#" class="slide-news__img _ibg">
 										<picture>
 											<source data-srcset="img/news-1.webp" type="image/webp">
-											<img data-src="img/news-1.png" class="lazy" alt="Изображение отсутствует" src="img/icons/no-image.png">
+											<img data-src="img/news-1.png" width="1199" height="742" class="lazy" alt="Изображение отсутствует" src="img/icons/no-image.png">
 										</picture>
 									</a>
-									<div class="slide-news__title _title">Компания Филиппа Киркорова задолжала налоговой ₽95 тыс.</div>
+									<div class="slide-news__title _title"><a href="#">Компания Филиппа Киркорова задолжала налоговой ₽95 тыс.</a></div>
 									<div class="slide-news__desc">ООО «Филипп Киркоров Продакшн» задолжало Федеральной налоговой службе 95 тыс. 605 руб.</div>
 								</div>
 							</div>
@@ -400,6 +404,55 @@
 							<div class="control-slider-news__arrow control-slider-news__arrow_next"></div>
 							<div class="control-slider-news__pagging"></div>
 						</div>
+					</div>
+				</div>
+			</section>
+			<section class="page__articles articles">
+				<div class="articles__content _container">
+					<div class="articles__main">
+						<div class="articles__body">
+							<h3 class="articles__title title">Статьи о работе ФССП</h3>
+							<div class="articles__list">
+								<article class="articles__item article">
+									<h3 class="article__title"><a href="#">Как приставы списывают деньги с карты</a></h3>
+									<div class="article__desc">Описание процедуры списания денег приставами, ответы на часто задаваемые по этому поводу вопросы.</div>
+								</article>
+								<article class="articles__item article">
+									<h3 class="article__title"><a href="#">Как приставы списывают деньги с карты. И как их потом возвращать</a></h3>
+									<div class="article__desc">Описание процедуры списания денег приставами, ответы на часто задаваемые по этому поводу вопросы. Ответы на часто задаваемые по этому поводу вопросы. Ответы на часто задаваемые по этому поводу вопросы.</div>
+								</article>
+								<article class="articles__item article">
+									<h3 class="article__title"><a href="#">Как приставы списывают деньги с карты</a></h3>
+									<div class="article__desc">Описание процедуры списания денег приставами, ответы на часто задаваемые по этому поводу вопросы.</div>
+								</article>
+								<article class="articles__item article">
+									<h3 class="article__title"><a href="#">Как приставы списывают деньги с карты. И как их потом возвращать</a></h3>
+									<div class="article__desc">Описание процедуры списания денег приставами, ответы на часто задаваемые по этому поводу вопросы. Ответы на часто задаваемые по этому поводу вопросы. Ответы на часто задаваемые по этому поводу вопросы.</div>
+								</article>
+							</div>
+							<div class="articles__more"><a href="#">Все статьи</a></div>
+						</div>
+					</div>
+					<div class="articles__aside departaments">
+						<div class="departaments__title title">Территориальные отделения ФССП России</div>
+						<ul class="departaments__list">
+							<li><a href="#" class="departaments__link">Москва</a></li>
+							<li><a href="#" class="departaments__link">Московская область</a></li>
+							<li><a href="#" class="departaments__link">Санкт-петербург</a></li>
+							<li><a href="#" class="departaments__link">Краснодар</a></li>
+							<li><a href="#" class="departaments__link">Екатеринбург</a></li>
+							<li><a href="#" class="departaments__link">Челябинск</a></li>
+							<li><a href="#" class="departaments__link">Казань</a></li>
+							<li><a href="#" class="departaments__link">Красноярск</a></li>
+							<li><a href="#" class="departaments__link">Республика Дагестан</a></li>
+							<li><a href="#" class="departaments__link">Республика Башкортостан</a></li>
+							<li><a href="#" class="departaments__link">Ростов-на-Дону</a></li>
+							<li><a href="#" class="departaments__link">Самара</a></li>
+							<li><a href="#" class="departaments__link">Нижний Новгород</a></li>
+							<li><a href="#" class="departaments__link">Новосибирск</a></li>
+							<li><a href="#" class="departaments__link">Пермский край</a></li>
+						</ul>
+						<div class="articles__more"><a href="#">Все территориальные отделения</a></div>
 					</div>
 				</div>
 			</section>

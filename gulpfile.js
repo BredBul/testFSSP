@@ -42,9 +42,9 @@ let path = {
 		favicon: src_folder + "/img/favicon.{jpg,png,svg,gif,ico,webp}",
 		html: [src_folder + "/*.html", "!" + src_folder + "/_*.html"],
 		// js: [src_folder + "/js/app.js", src_folder + "/js/vendors.js", src_folder + "/js/isIE.js"],
-		js: [src_folder + "/js/app.js", src_folder + "/js/vendors.js", src_folder + "/js/isIE.js", src_folder + "/js/corejs.js"], /* for IE */
-		jsIE: [src_folder + "/js/app.js", src_folder + "/js/vendors.js", src_folder + "/js/isIE.js"], /* for IE */
-		corejs: [src_folder + "/js/corejs.js"],
+		js: [src_folder + "/js/app.js", src_folder + "/js/vendors.js", src_folder + "/js/isIE.js"], /* for IE */
+		jsIE: [src_folder + "/js/app.js"], /* for IE */
+		corejs: [src_folder + "/js/corejs.js"], /* for IE */
 		css: src_folder + "/scss/style.scss",
 		images: [src_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}", "!**/favicon.*"],
 		fonts: src_folder + "/fonts/*.ttf",
@@ -120,23 +120,29 @@ function js() {
 		.pipe(dest(path.build.js))
 		.pipe(browsersync.stream());
 }
-function jsIE() {
+function jsIE() { /* for IE */
 	return src(path.src.jsIE, {})
 	.pipe(plumber())
-		.pipe(fileinclude())
-		.pipe(gulp.dest(path.build.jsIE))
-		.pipe(babel({
-			presets: ['@babel/preset-env'] /* for IE */
-		}))
-		.pipe(uglify(/* options */))
-		.pipe(
-			rename({
-				suffix: ".min",
-				extname: ".js"
-			})
-		)
-		.pipe(dest(path.build.jsIE));
-}
+	.pipe(fileinclude())
+	.pipe(gulp.dest(path.build.jsIE))
+	.pipe(babel({
+		presets: ['@babel/preset-env'] 
+	}))
+	.pipe(uglify(/* options */))
+	.pipe(
+		rename({
+			suffix: ".min",
+			extname: ".js"
+		})
+	)
+	.pipe(dest(path.build.jsIE));
+} 
+function corejs() {
+	return src(path.src.corejs, {})
+	.pipe(plumber())
+	.pipe(gulp.dest(path.build.jsIE))
+} 
+/* for IE */
 function images() {
 	return src(path.src.images)
 		.pipe(newer(path.build.images))
@@ -228,12 +234,13 @@ function watchFiles() {
 	gulp.watch([path.watch.jsIE], jsIE);
 	gulp.watch([path.watch.images], images);
 }
-let build = gulp.series(clean, fonts_otf, gulp.parallel(html, css, js, jsIE, favicon, images, videos), fonts, gulp.parallel(fontstyle));
+let build = gulp.series(clean, fonts_otf, gulp.parallel(html, css, js, jsIE, corejs, favicon, images, videos), fonts, gulp.parallel(fontstyle));
 let watch = gulp.parallel(build, watchFiles, browserSync);
 
 exports.html = html;
 exports.css = css;
 exports.js = js;
+exports.corejs = corejs;
 exports.jsIE = jsIE;
 exports.videos = videos;
 exports.favicon = favicon;

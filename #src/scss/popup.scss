@@ -81,8 +81,10 @@
 		z-index: 30;
 		background: url("../img/icons/close.svg") 0 0 no-repeat;
 		filter: invert(1);
-		&:hover{
-			transform: scale(1.2);
+		@media (any-hover: hover){
+			&:hover{
+				transform: scale(1.2);
+			} 
 		}
 	}
 }

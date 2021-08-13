@@ -22,15 +22,10 @@ if (isIE()) {
     ibg();
     function loadScript() {
         let corejsIE = document.createElement('script');
-        let vendorsjsIE = document.createElement('script');
         let appjsIE = document.createElement('script');
-        // vendorsjsIE.type = 'text/javascript';
-        // appjsIE.type = 'text/javascript';
-        corejsIE.src = 'js/corejs.js';
-        vendorsjsIE.src = 'jsIE/vendors.min.js';
+        corejsIE.src = 'jsIE/corejs.js';
         appjsIE.src = 'jsIE/app.min.js';
         document.body.appendChild(corejsIE);
-        // document.body.appendChild(vendorsjsIE);
         document.body.appendChild(appjsIE);
     }
     function initialize() {
@@ -40,11 +35,8 @@ if (isIE()) {
 }
 else {
     function loadScript() {
-        let vendorsjs = document.createElement('script');
         let appjs = document.createElement('script');
-        vendorsjs.src = 'js/vendors.min.js';
         appjs.src = 'js/app.min.js';
-        // document.body.appendChild(vendorsjs);
         document.body.appendChild(appjs);
     }
     function initialize() {

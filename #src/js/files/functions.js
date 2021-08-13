@@ -42,35 +42,6 @@ if (location.hash) {
   }
 }
 //=================
-//Menu
-let iconMenu = document.querySelector(".icon-menu");
-let menuArrows = document.querySelectorAll('.menu__arrow');
-  if (menuArrows.length > 0) {
-    for (let index = 0; index < menuArrows.length; index++) {
-      const menuArrow = menuArrows[index];
-      menuArrow.addEventListener("click", function (e) {
-        menuArrow.parentElement.classList.toggle('_active');
-      });
-    }
-  }
-if (iconMenu != null) {
-  let delay = 500;
-  let menuBody = document.querySelector(".menu__body");
-  iconMenu.addEventListener("click", function (e) {
-    if (unlock) {
-      body_lock(delay);
-      iconMenu.classList.toggle("_active");
-      menuBody.classList.toggle("_active");
-    }
-  });
-}
-function menu_close() {
-  let iconMenu = document.querySelector(".icon-menu");
-  let menuBody = document.querySelector(".menu__body");
-  iconMenu.classList.remove("_active");
-  menuBody.classList.remove("_active");
-}
-//=================
 //BodyLock
 function body_lock(delay) {
  let body = document.querySelector("body");
@@ -116,31 +87,6 @@ function body_lock_add(delay) {
    }, delay);
  }
 }
-//=================
-// LettersAnimation
-// let title = document.querySelectorAll('._letter-animation');
-// if (title) {
-//   for (let index = 0; index < title.length; index++) {
-//     let el = title[index];
-//     let txt = el.innerHTML;
-//     let txt_words = txt.replace('  ', ' ').split(' ');
-//     let new_title = '';
-//     for (let index = 0; index < txt_words.length; index++) {
-//       let txt_word = txt_words[index];
-//       let len = txt_word.length;
-//       new_title = new_title + '<p>';
-//       for (let index = 0; index < len; index++) {
-//         let it = txt_word.substr(index, 1);
-//         if (it == ' ') {
-//           it = '&nbsp;';
-//         }
-//         new_title = new_title + '<span>' + it + '</span>';
-//       }
-//       el.innerHTML = new_title;
-//       new_title = new_title + '&nbsp;</p>';
-//     }
-//   }
-// }
 //=================
 //Tabs
 let tabs = document.querySelectorAll("._tabs");
@@ -281,88 +227,12 @@ if (spollersArray.length > 0) {
   }
 }
 //========================================================================================================================================================
-//Gallery
-let gallery = document.querySelectorAll('._gallery');
-if (gallery) {
-  gallery_init();
-}
-function gallery_init() {
-  for (let index = 0; index < gallery.length; index++) {
-    const el = gallery[index];
-    lightGallery(el, {
-      counter: false,
-      selector: 'a',
-      download: false
-    });
-  }
-}
-//=================
-//SearchInList
-function search_in_list(input) {
-  let ul = input.parentNode.querySelector('ul')
-  let li = ul.querySelectorAll('li');
-  let filter = input.value.toUpperCase();
 
-  for (i = 0; i < li.length; i++) {
-    let el = li[i];
-    let item = el;
-    txtValue = item.textContent || item.innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      el.style.display = "";
-    } else {
-      el.style.display = "none";
-    }
-  }
-}
 //=================
 //DigiFormat
 function digi(str) {
   var r = str.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1 ");
   return r;
-}
-//=================
-//DiGiAnimate
-function digi_animate(digi_animate) {
-  if (digi_animate.length > 0) {
-    for (let index = 0; index < digi_animate.length; index++) {
-      const el = digi_animate[index];
-      const el_to = parseInt(el.innerHTML.replace(' ', ''));
-      if (!el.classList.contains('_done')) {
-        digi_animate_value(el, 0, el_to, 1500);
-      }
-    }
-  }
-}
-function digi_animate_value(el, start, end, duration) {
-  var obj = el;
-  var range = end - start;
-  // no timer shorter than 50ms (not really visible any way)
-  var minTimer = 50;
-  // calc step time to show all interediate values
-  var stepTime = Math.abs(Math.floor(duration / range));
-
-  // never go below minTimer
-  stepTime = Math.max(stepTime, minTimer);
-
-  // get current time and calculate desired end time
-  var startTime = new Date().getTime();
-  var endTime = startTime + duration;
-  var timer;
-
-  function run() {
-    var now = new Date().getTime();
-    var remaining = Math.max((endTime - now) / duration, 0);
-    var value = Math.round(end - (remaining * range));
-    obj.innerHTML = digi(value);
-    if (value == end) {
-      clearInterval(timer);
-    }
-  }
-
-  timer = setInterval(run, stepTime);
-  run();
-
-  el.classList.add('_done');
 }
 //=================
 //Popups
@@ -529,140 +399,3 @@ function _removeClasses(el, class_name) {
 function _is_hidden(el) {
   return (el.offsetParent === null)
 }
-// ShowMore Beta ========================
-let moreBlocks = document.querySelectorAll('._more-block');
-if (moreBlocks.length > 0) {
-  let wrapper = document.querySelector('.wrapper');
-  for (let index = 0; index < moreBlocks.length; index++) {
-    const moreBlock = moreBlocks[index];
-    let items = moreBlock.querySelectorAll('._more-item');
-    if (items.length > 0) {
-      let itemsMore = moreBlock.querySelector('._more-link');
-      let itemsContent = moreBlock.querySelector('._more-content');
-      let itemsView = itemsContent.getAttribute('data-view');
-      if (getComputedStyle(itemsContent).getPropertyValue("transition-duration") === '0s') {
-        itemsContent.style.cssText = "transition-duration: 1ms";
-      }
-      itemsMore.addEventListener("click", function (e) {
-        if (itemsMore.classList.contains('_active')) {
-          setSize();
-        } else {
-          setSize('start');
-        }
-        itemsMore.classList.toggle('_active');
-        e.preventDefault();
-      });
-
-      let isScrollStart;
-      function setSize(type) {
-        let resultHeight;
-        let itemsContentHeight = 0;
-        let itemsContentStartHeight = 0;
-
-        for (let index = 0; index < items.length; index++) {
-          if (index < itemsView) {
-            itemsContentHeight += items[index].offsetHeight;
-          }
-          itemsContentStartHeight += items[index].offsetHeight;
-        }
-        resultHeight = (type === 'start') ? itemsContentStartHeight : itemsContentHeight;
-        isScrollStart = window.innerWidth - wrapper.offsetWidth;
-        itemsContent.style.height = `${resultHeight}px`;
-      }
-
-      itemsContent.addEventListener("transitionend", updateSize, false);
-
-      function updateSize() {
-        let isScrollEnd = window.innerWidth - wrapper.offsetWidth;
-        if (isScrollStart === 0 && isScrollEnd > 0 || isScrollStart > 0 && isScrollEnd === 0) {
-          if (itemsMore.classList.contains('_active')) {
-            setSize('start');
-          } else {
-            setSize();
-          }
-        }
-      }
-      window.addEventListener("resize", function (e) {
-        if (!itemsMore.classList.contains('_active')) {
-          setSize();
-        } else {
-          setSize('start');
-        }
-      });
-      setSize();
-    }
-  }
-}
-//========================================
-//Animate
-function animate({ timing, draw, duration }) {
-  let start = performance.now();
-  requestAnimationFrame(function animate(time) {
-    // timeFraction изменяется от 0 до 1
-    let timeFraction = (time - start) / duration;
-    if (timeFraction > 1) timeFraction = 1;
-
-    // вычисление текущего состояния анимации
-    let progress = timing(timeFraction);
-
-    draw(progress); // отрисовать её
-
-    if (timeFraction < 1) {
-      requestAnimationFrame(animate);
-    }
-
-  });
-}
-function makeEaseOut(timing) {
-  return function (timeFraction) {
-    return 1 - timing(1 - timeFraction);
-  }
-}
-function makeEaseInOut(timing) {
-  return function (timeFraction) {
-    if (timeFraction < .5)
-      return timing(2 * timeFraction) / 2;
-    else
-      return (2 - timing(2 * (1 - timeFraction))) / 2;
-  }
-}
-function quad(timeFraction) {
-  return Math.pow(timeFraction, 2)
-}
-function circ(timeFraction) {
-  return 1 - Math.sin(Math.acos(timeFraction));
-}
-/*
-animate({
-  duration: 1000,
-  timing: makeEaseOut(quad),
-  draw(progress) {
-    window.scroll(0, start_position + 400 * progress);
-  }
-});*/
-
-//Полифилы
-(function () {
-  // проверяем поддержку
-  if (!Element.prototype.closest) {
-    // реализуем
-    Element.prototype.closest = function (css) {
-      var node = this;
-      while (node) {
-        if (node.matches(css)) return node;
-        else node = node.parentElement;
-      }
-      return null;
-    };
-  }
-})();
-(function () {
-  // проверяем поддержку
-  if (!Element.prototype.matches) {
-    // определяем свойство
-    Element.prototype.matches = Element.prototype.matchesSelector ||
-      Element.prototype.webkitMatchesSelector ||
-      Element.prototype.mozMatchesSelector ||
-      Element.prototype.msMatchesSelector;
-  }
-})();

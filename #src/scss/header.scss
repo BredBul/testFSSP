@@ -32,10 +32,12 @@
     	@media(min-width: 1025px){
     		transition: .4s linear;
     		top: -100px;
-    		&:hover{
-    			transition: .2s linear;
-   				top: 0;
-   			}
+			@media (any-hover: hover){
+				&:hover{
+					transition: .2s linear;
+					top: 0;
+				} 
+			}
     	}
     }
 	/* .header__content */
