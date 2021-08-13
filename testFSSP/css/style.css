@@ -1594,10 +1594,6 @@ body.ie ._ibg img {
   padding: 0px 0px 55px 0px;
 }
 
-.news__content {
-  min-width: 0;
-}
-
 .news__title {
   padding: 20px 0px 20px 0px;
   text-align: end;
@@ -1612,6 +1608,7 @@ body.ie ._ibg img {
 
 .slider-news {
   position: relative;
+  min-width: 0;
 }
 
 .slider-news__body {
