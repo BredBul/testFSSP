@@ -2235,6 +2235,11 @@ body.ie ._ibg img {
     display: block;
   }
 
+  .banner-mp__phone img {
+    width: 192px;
+    height: 100%;
+  }
+
   .banner-mp__badges {
     display: -webkit-box;
     display: -ms-flexbox;

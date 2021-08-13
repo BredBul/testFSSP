@@ -374,6 +374,11 @@ body {
 		@media (max-width:$md3+px){
 			left: 51px;
 			display: block;
+			img{
+				width: 192px;
+				height: 100%;
+			}
+			
 		}
 	}
 	&__badges {
